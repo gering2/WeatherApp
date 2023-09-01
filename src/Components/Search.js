@@ -4,7 +4,7 @@ import {getWeatherOptions} from '../apis.js'
 import SearchItem from './SearchItem.js';
 import debounce from 'lodash/debounce.js'
 
-function Search() {
+function Search({setSelectedCity}) {
     console.log(process.env.REACT_APP_WEATHER_KEY)
 
     const [searchQuery,setSearchQuery] = useState("")
@@ -51,23 +51,25 @@ function Search() {
    return (
 
     
-<div class="w-[80%] p-4 ">
+<div class="w-[80%] h-[40%] p-4 mt-10 ">
 
-    <input type="search" class="peer mb-8 mt-10 h-full w-full flex   rounded-[7px] border border-blue-gray-200   bg-transparent 
+    <input type="search" class="peer p-2 h-10 w-full flex   rounded-[7px] border border-blue-gray-200   bg-transparent 
     px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border 
     placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 
      focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
- placeholder="Enter City" />
+ placeholder="Enter City" onChange={handleSearchChange} />
  <div class="mt-3 p-4">
     {
         currentResult.map((result) => {
-        
-            return <SearchItem searchItem={result}></SearchItem>
+            
+            return <SearchItem setSelectedCity={setSelectedCity} searchItem={result}></SearchItem>
         })
     }
- </div>
+
+    </div>
     </div>
    )
+  
 }
 
 export default Search ;
