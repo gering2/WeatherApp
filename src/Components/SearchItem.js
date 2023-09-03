@@ -1,8 +1,17 @@
-function SearchItem({setSelectedCity,searchItem}) {
+
+import {
+    ListItem,
+    ListItemSuffix,
+    Chip,
+    Card,
+  } from "@material-tailwind/react";
+  import LocationCityIcon from '@mui/icons-material/LocationCity';
+function SearchItem({setSelectedCity,searchItem,handleCityClick }) {
     console.log(searchItem)
-    return ( <div onClick = {() => setSelectedCity(searchItem)} class="p-1 border-solid border-2 border-black">
-        
-        {searchItem}</div>);
+    return ( <ListItem  onClick = {() => handleCityClick(searchItem)} className="p-1 py-5 flex items-center h-8  ">
+        <LocationCityIcon class="mr-2 h-6 relative bottom-[1px]"></LocationCityIcon>
+        {searchItem}</ListItem>);
 }
 
 export default SearchItem;
+
