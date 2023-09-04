@@ -33,9 +33,12 @@ function Search({handleCityClick,setSelectedCity,selectedCity,searchFocused,setS
         console.log(res)
          setCurrentResult(res)
     }
-     
-
+   
     }
+    function handleSearchInputBlur(){
+        setSearchFocused(false)
+     }
+
     async function fetchSearch(query) {
         try {
             console.log(getCityOptions)
@@ -64,9 +67,9 @@ function Search({handleCityClick,setSelectedCity,selectedCity,searchFocused,setS
     px-4 py-4 text-lg font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border 
     placeholder-gray-500 focus:border-2
      focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
- placeholder="Enter City" onFocus={() => setSearchFocused(true)} onChange={ _.debounce(handleSearchChange,2000)} />
+ placeholder="Enter City" onBlur={_.debounce(handleSearchInputBlur,300)}onFocus={() => setSearchFocused(true)} onChange={ _.debounce(handleSearchChange,2000)} />
  {searchFocused ===true && 
- <div class ="mt-[3px] w-[29%] mx-auto px-3 backdrop-blur-lg border-white-100 border-[1px] rounded-lg" >
+ <div class ="mt-[3px] w-[29%] mx-auto px-3 bg-slate-200 border-white-100 border-[1px] rounded-lg" >
     <List className="divide-y divide-black">
     {
         currentResult.map((city) => {
