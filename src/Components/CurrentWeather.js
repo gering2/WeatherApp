@@ -28,11 +28,11 @@ function CurrentWeather({city}) {
     }
  
     return (weatherData !== null && 
-    <div class="p-6 border-[1px]  rounded-md flex flex-col items-center">
+    <div class="p-10 w-[20%]   bg-slate-200  rounded-md flex flex-col items-center">
         {console.log(weatherData)}
-        <p class="text-xl">{city.name}</p>
-        <p class="text-5xl p-4  ">{weatherData.current.temp_f}</p>
-        <p class="text-sm">Percipitation (in):<span class="px-2">{weatherData.current.precip_in}</span></p>
+        <p class="font-bold text-xl">{city.name}</p>
+        <p class="font-extralight text-7xl p-4  ">{weatherData.current.temp_f}°F</p>
+        <p class=" text-sm">Percipitation (in):<span class="px-2">{weatherData.current.precip_in}</span></p>
         <p class="text-sm">Wind (mph):<span class="px-2 ">{weatherData.current.wind_mph}</span></p>
         
     </div> );

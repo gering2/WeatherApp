@@ -11,7 +11,7 @@ import {
     Card,
   } from "@material-tailwind/react";
 import _ from 'lodash';
-function Search({handleCityClick,setSelectedCity}) {
+function Search({handleCityClick,setSelectedCity,selectedCity,searchFocused,setSearchFocused}) {
 
     const [searchQuery,setSearchQuery] = useState("")
     const [currentResult,setCurrentResult] = useState([])
@@ -60,21 +60,23 @@ function Search({handleCityClick,setSelectedCity}) {
     
 <div class="w-[80%] h-[40%] p-4 mt-10 ">
 
-    <input type="search" class="peer p-2 h-10 w-full flex   rounded-[7px] border border-blue-gray-200   bg-transparent 
-    px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border 
-    placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 
+    <input type="search" class="peer p-2 h-10 w-[30%] flex mx-auto    rounded-[20px] border  border-blue-gray-200   bg-transparent 
+    px-4 py-4 text-lg font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border 
+    placeholder-gray-500 focus:border-2
      focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
- placeholder="Enter City" onChange={ _.debounce(handleSearchChange,2000)} />
- <div class ="mt-3 px-3">
-    <List>
+ placeholder="Enter City" onFocus={() => setSearchFocused(true)} onChange={ _.debounce(handleSearchChange,2000)} />
+ {searchFocused ===true && 
+ <div class ="mt-[3px] w-[29%] mx-auto px-3 backdrop-blur-lg border-white-100 border-[1px] rounded-lg" >
+    <List className="divide-y divide-black">
     {
         currentResult.map((city) => {
             
-            return <SearchItem handleCityClick={handleCityClick} setSelectedCity={setSelectedCity} searchItem={city}></SearchItem>
+            return <SearchItem class="" handleCityClick={handleCityClick} setSelectedCity={setSelectedCity} searchItem={city}></SearchItem>
         })
     }
 </List>
     </div>
+    }
     </div>
    )
   

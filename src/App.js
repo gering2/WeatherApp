@@ -6,10 +6,12 @@ import CurrentWeather from './Components/CurrentWeather';
 function App() {
 
   const [selectedCity,setSelectedCity] = useState(null);
-  
+  const [searchFocused,setSearchFocused] = useState(false)
+
   function handleCityClick(city) {
     console.log(city)
     setSelectedCity(city)
+    setSearchFocused(false)
     try {
      
     }
@@ -19,10 +21,10 @@ function App() {
   }
   return (
    
-      <div class="w-full h-[100vh]  flex-col items-center flex ">
-      <Search handleCityClick={handleCityClick} setSelectedCity={setSelectedCity}></Search>
+      <div class="  bg-cover w-full h-[100vh]  flex-col items-center flex bg-[url('./Images/clouds.jpg')]">
+      <Search setSearchFocused={setSearchFocused}searchFocused={searchFocused} handleCityClick={handleCityClick} selectedCity={selectedCity} setSelectedCity={setSelectedCity}></Search>
      
-      <CurrentWeather city={selectedCity}/>
+      <CurrentWeather class="backdrop-blur-lg" city={selectedCity}/>
     </div>
   );
 }

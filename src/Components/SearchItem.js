@@ -8,9 +8,9 @@ import {
   import LocationCityIcon from '@mui/icons-material/LocationCity';
 function SearchItem({setSelectedCity,searchItem,handleCityClick }) {
     console.log(searchItem)
-    return ( <ListItem  onClick = {() => handleCityClick(searchItem)} className="p-1 py-5 flex items-center h-8  ">
-        <LocationCityIcon class="mr-2 h-6 relative bottom-[1px]"></LocationCityIcon>
-        {searchItem.name}</ListItem>);
+    return ( <div  onClick = {() => handleCityClick(searchItem)} class= "whitespace-nowrap  overflow-x-auto cursor-pointer w-full py-2 flex items-center    ">
+        <LocationCityIcon class="mr-2 h-[28px]  relative bottom-[1px]"></LocationCityIcon>
+        {searchItem.name}</div>);
 }
 
 export default SearchItem;
