@@ -8,6 +8,7 @@ function App() {
   const [selectedCity,setSelectedCity] = useState(null);
   
   function handleCityClick(city) {
+    console.log(city)
     setSelectedCity(city)
     try {
      
@@ -20,9 +21,7 @@ function App() {
    
       <div class="w-full h-[100vh]  flex-col items-center flex ">
       <Search handleCityClick={handleCityClick} setSelectedCity={setSelectedCity}></Search>
-      {selectedCity !== null &&
-        <div>{selectedCity}</div>
-      }
+     
       <CurrentWeather city={selectedCity}/>
     </div>
   );

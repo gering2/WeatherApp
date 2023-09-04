@@ -31,9 +31,7 @@ function Search({handleCityClick,setSelectedCity}) {
     if(e.target.value !== ""){
         const res = await fetchSearch(e.target.value)
         console.log(res)
-         setCurrentResult(res.map((city) => {
-             return city.name
-         }))
+         setCurrentResult(res)
     }
      
 
@@ -70,9 +68,9 @@ function Search({handleCityClick,setSelectedCity}) {
  <div class ="mt-3 px-3">
     <List>
     {
-        currentResult.map((result) => {
+        currentResult.map((city) => {
             
-            return <SearchItem handleCityClick={handleCityClick} setSelectedCity={setSelectedCity} searchItem={result}></SearchItem>
+            return <SearchItem handleCityClick={handleCityClick} setSelectedCity={setSelectedCity} searchItem={city}></SearchItem>
         })
     }
 </List>
